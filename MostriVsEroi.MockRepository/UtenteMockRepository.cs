@@ -3,9 +3,9 @@ using System;
 
 namespace MostriVsEroi.MockRepository
 {
-    public class UtenteMockRepository
+    public class UtenteMockRepository: IUtenteRepository
     {
-        public static Utente GetUser(Utente utente)
+        public Utente GetUser(Utente utente)
         {
             utente.IsAuthenticated = true;
             return utente;

@@ -9,10 +9,6 @@ namespace MostriVsEroi.Modelli
         public bool IsAuthenticated { get; set; }
         public bool IsAdmin { get; set; }
 
-        public Utente()
-        {
-            
-        }
         public Utente(string username, string password)
         {
             Username = username;
@@ -20,6 +16,5 @@ namespace MostriVsEroi.Modelli
             IsAuthenticated = false;
             IsAdmin = false;
         }
-
     }
 }

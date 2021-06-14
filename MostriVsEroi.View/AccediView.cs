@@ -20,7 +20,7 @@ namespace MostriVsEroi.View
             }
             else if(utente.IsAuthenticated && !utente.IsAdmin)
             {
-                //MenuNonAdmin
+                Menu.MenuNonAdmin(utente);
             }
             else
             {
