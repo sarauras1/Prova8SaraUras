@@ -24,7 +24,7 @@ namespace MostriVsEroi.View
                 {
                     case "1":
                         //Devo fare accedere l'utente
-                        RichiestaDati.InserisciUsernamePassword();
+                        AccediView.Accedi();
                         break;
                     case "2":
                         //Devo far registrare l'utente

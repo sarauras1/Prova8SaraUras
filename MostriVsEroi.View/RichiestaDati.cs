@@ -1,4 +1,6 @@
-﻿using System;
+﻿using MostriVsEroi.Modelli;
+using MostriVsEroi.SchermataServices;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,7 +10,7 @@ namespace MostriVsEroi.View
 {
     class RichiestaDati
     {
-        internal static void InserisciUsernamePassword()
+        internal static Utente InserisciUsernamePassword()
         {
             Console.WriteLine("Inserisci il tuo username");
             string username = Console.ReadLine();
@@ -16,7 +18,7 @@ namespace MostriVsEroi.View
             Console.WriteLine("Inserisci la password");
             string password = Console.ReadLine();
 
-            //Controllare che l'utente sia valido
+            return UtenteSchermataServices.GetUtente(username, password);
         }
     }
 }
