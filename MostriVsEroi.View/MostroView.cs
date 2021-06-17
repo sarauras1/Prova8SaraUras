@@ -11,10 +11,15 @@ namespace MostriVsEroi.View
     {
         internal static Mostro CreaNuovoMostro()
         {          
-          List<Mostro> mostri = Services.MostroServices.GetMostro();
+          List<Mostro> mostro = Services.MostroServices.GetMostro();
 
-            
-            
+            var random = new Random();
+
+            int index = random.Next(mostro.Count);
+            Console.WriteLine($"Categoria Mostro = {mostro[index].Categoria}");
+            Console.WriteLine($"Nome Arma {mostro[index].Arma.Nome}");
+            Console.WriteLine($"Punti Toglie {mostro[index].Arma.PuntiDanno}");
+            return mostro[index];
         }
     }
 }
