@@ -1,12 +1,17 @@
-﻿using System;
+﻿using MostriVsEroi.Modelli;
+using MostriVsEroi.View;
+using System;
 
 namespace MostriVsEroi
 {
-    class Program
+ public class Program
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            Console.WriteLine("Gioca Mostri Vr Eroi");
+            Menu.MainMenu();
         }
+
+       
     }
 }

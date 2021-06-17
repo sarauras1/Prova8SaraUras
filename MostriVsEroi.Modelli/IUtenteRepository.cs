@@ -9,5 +9,9 @@ namespace MostriVsEroi.Modelli
     public interface IUtenteRepository
     {
         public Utente GetUser(Utente utente);
+      public List<Utente> FetchUtenti();
+        public bool CheckUsername(Utente utente);
+        public Utente UpdateUtenti(Utente utente);
+
     }
 }

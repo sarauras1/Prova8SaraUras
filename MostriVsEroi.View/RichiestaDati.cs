@@ -16,8 +16,11 @@ namespace MostriVsEroi.View
             string username = Console.ReadLine();
 
             Console.WriteLine("Inserisci la password");
-            string password = Console.ReadLine();
+            int password = Convert.ToInt32(Console.ReadLine());
+            //Controllare che l'utente sia valido
 
+            //Servizio che mappi il mio utente
+            //Mappare username e password a utente
             return UtenteSchermataServices.GetUtente(username, password);
         }
     }

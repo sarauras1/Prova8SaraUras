@@ -5,6 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\MostriVSEroi.DBRepository\MostriVSEroi.DBRepository.csproj" />
     <ProjectReference Include="..\MostriVsEroi.SchermataServices\MostriVsEroi.SchermataServices.csproj" />
     <ProjectReference Include="..\MostriVsEroi.Services\MostriVsEroi.Services.csproj" />
   </ItemGroup>
