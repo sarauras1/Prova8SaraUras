@@ -6,10 +6,7 @@ namespace MostriVsEroi.MockRepository
 {
     public class UtenteMockRepository: IUtenteRepository
     {
-        public bool CheckUsername(Utente utente)
-        {
-            throw new NotImplementedException();
-        }
+      
 
         public List<Utente> FetchUtenti()
         {
@@ -23,12 +20,14 @@ namespace MostriVsEroi.MockRepository
         public Utente GetUser(Utente utente)
         {
             utente.IsAuthenticated = true;
+            
             return utente;
         }
 
-        public Utente UpdateUtenti(Utente utente)
-        {
-            throw new NotImplementedException();
-        }
+      
+
+       
+
+        
     }
 }

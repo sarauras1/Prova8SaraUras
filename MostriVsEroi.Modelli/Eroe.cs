@@ -12,22 +12,20 @@ namespace MostriVsEroi.Modelli
 
         public Arma Arma { get; set; }
         public string Nome { get; set; }
-
-        public int Livello { get; set; }
-        public int PuntiVita { get; set; }
-
+   
         public string Categoria { get; set; }
 
-        public Eroe(string categoria, Arma arma, int livello, int puntiVita, string nome)
+        public Eroe(string categoria, Arma arma, string nome)
         {
-            Livello = livello;
-            Nome = nome;
-            PuntiVita = puntiVita;
+
+            Nome = nome;          
             Arma = arma;
             Categoria = categoria;
 
         }
 
-       
+        public Eroe()
+        {
+        }
     }
 }

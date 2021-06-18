@@ -9,9 +9,9 @@ namespace MostriVsEroi.SchermataServices
 {
    public static class EroeSchermataServices
     {
-        public static Eroe GetEroe(string categoria, Arma arma, int livello, int puntiVita, string nome)
+        public static Eroe GetEroe(string categoria, Arma arma, string nome)
         {
-            return new Eroe(categoria, arma, livello, puntiVita, nome);
+            return new Eroe(categoria, arma, nome);
         }
     }
 }

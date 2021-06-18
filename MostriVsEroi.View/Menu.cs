@@ -120,7 +120,7 @@ namespace MostriVsEroi.View
                     case "2":
                         //aggiunge nel db
 
-                        EroeView.ScegliEroe();
+                        EroeView.CreateEroe();
                         break;
                     case "3":
                         EroeView.EliminaEroe();

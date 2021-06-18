@@ -1,12 +1,13 @@
 ﻿using System;
-
+using MostriVSEroi.DBRepository;
 namespace MostriVsEroi.View
 {
     internal class ClassificaGlobaleView
     {
         internal static void MostraClassificaGlobale()
         {
-            throw new NotImplementedException();
+            Console.WriteLine("Classifica Globale");
+            PartitaRepository.ClassificaGlobale();
         }
     }
 }

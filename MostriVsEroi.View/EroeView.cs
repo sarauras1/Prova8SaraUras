@@ -30,8 +30,8 @@ namespace MostriVsEroi.View
                     foreach (Eroe eroe in eroi)
                     {
                         Console.WriteLine("");
-                        Console.WriteLine($"Premi {count} per scegliere l'eroe {eroe.Nome}, di tipo {eroe.Categoria}= +" +
-                         $" con arma {eroe.Arma} che ha {eroe.Arma.PuntiDanno} punti danno, di livello {eroe.Livello} e vita {eroe.PuntiVita}");
+                        Console.WriteLine($"Premi {count++} per scegliere l'eroe {eroe.Nome}, di tipo {eroe.Categoria}= +" +
+                         $" con arma {eroe.Arma} che ha {eroe.Arma.PuntiDanno}");
                         Console.WriteLine("");
                     }
 
@@ -59,29 +59,45 @@ namespace MostriVsEroi.View
 
 
         internal static void CreateEroe()
+           
         {
+            Utente utente = new Utente();
             List<Eroe> eroi = Services.EroeServices.GetEroi();
             foreach (var item in eroi)
             {
-                Console.WriteLine(item);
+                Console.WriteLine();
+                Console.WriteLine($"Categoria -> {item.Categoria}");
+                Console.WriteLine($"Nome -> {item.Nome}");              
+                Console.WriteLine();
             }
 
             do
             {
+                
                 Console.WriteLine($"Ciao inserici Categoria Eroe = Mago o Guerriero");
-
                 string categoria = Console.ReadLine();
                 Console.WriteLine("Inserici Nome");
                 string nome = Console.ReadLine();
+              
+                foreach (var item in eroi)
+                {
+                    Console.WriteLine();                  
+                    Console.WriteLine($"Nome Arma {item.Arma.Nome}");
+                    Console.WriteLine($"Punti danno Arma {item.Arma.PuntiDanno}");
+                    Console.WriteLine();
+                }
+
                 Console.WriteLine("Inserici Nome Arma");
                 string nomearma = Console.ReadLine();
                 Console.WriteLine("Inserici Punti Arma");
                 int puntidanno = Convert.ToInt32(Console.ReadLine());
-
+                Console.WriteLine("Inserisci Username");
+                string username = Console.ReadLine();
                 if (categoria != null && nome != null && puntidanno > 0)
                 {
-                    EroeDBRepository.AddEroe(categoria, nome, nomearma, puntidanno);
+                    EroeDBRepository.AddEroe(categoria, nome, nomearma, puntidanno, username);
                     Console.WriteLine("Personaggio inserito");
+                    Menu.MenuNonAdmin(utente);
 
                 }
                 else
@@ -94,11 +110,18 @@ namespace MostriVsEroi.View
 
         public static void EliminaEroe()
         {
+           
             List<Eroe> eroi = Services.EroeServices.GetEroi();
             foreach (var item in eroi)
             {
-                Console.WriteLine(item);
+                Console.WriteLine();
+                Console.WriteLine($"Categoria -> {item.Categoria}");
+                Console.WriteLine($"Nome -> {item.Nome}");
+                Console.WriteLine($"Nome Arma {item.Arma.Nome}");
+                Console.WriteLine($"Punti danno Arma {item.Arma.PuntiDanno}");
+                Console.WriteLine();
             }
+
 
             do
             {
