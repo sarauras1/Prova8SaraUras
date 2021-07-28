@@ -24,8 +24,6 @@ namespace MostriVsEroi.Modelli
 
         }
 
-        public Eroe()
-        {
-        }
+      
     }
 }

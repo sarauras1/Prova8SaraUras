@@ -54,7 +54,7 @@ namespace MostriVSEroi.DBRepository
                 SqlCommand command = new SqlCommand(sqlString, connection);
 
 
-                command.CommandText = "insert into dbo.Eroi values(@Categoria, @Nome, @Arma, @ArmaPuntiDanno)";
+                command.CommandText = "insert into dbo.Eroi values(@Categoria, @Nome, @Arma, @ArmaPuntiDanno, @Username)";
                 command.Parameters.AddWithValue("@Categoria", categoria);
                 command.Parameters.AddWithValue("@Nome", nomearma);
                 command.Parameters.AddWithValue("@Arma", puntidanno);

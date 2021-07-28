@@ -11,10 +11,16 @@ namespace MostriVsEroi.View
 {
     class GiocaView
     {
-        internal static void Gioca()//avanza solo al livello 2 non memorizza problema da risolvere
-            //non salva nel database 
+       
+        internal static void Gioca()
+
         {
-            Partita partita = new Partita();
+            List<int> p = new List<int>();
+            
+            int puntivita = 20;
+            p.Add(puntivita);
+
+          
             Console.WriteLine("Gioca Partita");
             //Scelta eroe
             Eroe eroe = EroeView.ScegliEroe();
@@ -22,114 +28,115 @@ namespace MostriVsEroi.View
             Console.WriteLine($"Hai scelto l eroe {eroe.Nome} con punti {eroe.Arma.PuntiDanno}");
             if (eroe.Categoria != null)
             {
+
+
                 Mostro mostro = MostroView.CreaNuovoMostro();
-                if (eroe.Arma.PuntiDanno < mostro.Arma.PuntiDanno )
+                if (eroe.Arma.PuntiDanno < mostro.Arma.PuntiDanno)
                 {
-                   
-                    Console.WriteLine("Hai Perso");
-                    partita.PuntiVita = 20;
-                    int calcolo = eroe.Arma.PuntiDanno - mostro.Arma.PuntiDanno;
-                    partita.PuntiAccumulati = calcolo;
-                    
-                    Console.WriteLine($"Il Mostro ti ha tolto {partita.PuntiAccumulati} punti" +
-                        $" mi dispice devi rimanere allo stesso livello hai ancora " +
-                        $"{partita.PuntiVita - partita.PuntiAccumulati}");
-                    Console.WriteLine("----------------------");
-                    InserisciRecords();
+                    int valore;
+
+                    try
+                    {
+                        do
+                        {    
+                             valore = mostro.Arma.PuntiDanno - eroe.Arma.PuntiDanno;
+                            Console.WriteLine("-----Hai Perso-------");
+                            Console.WriteLine("----------------------");
+                            Console.WriteLine($"Il Mostro ti ha tolto {valore} punti");
+                            Console.WriteLine("----------------------");
+                            p.Add(valore);
 
 
+
+                            Console.WriteLine($"Ti rimangono {CalcoloPuntimeno(p)} punti");
+                            if (valore <= 0)
+                            {
+                                Console.WriteLine("----------------------");
+                                Console.WriteLine("-------Game Over--------");
+                                Console.WriteLine("----------------------");
+                            }
+                        } while (valore <= 0);
+                                                
+
+                    }
+
+                    catch (Exception e)
+                    {
+                        Console.WriteLine(e.Message);
+                    }
                     Giocaredinuovo();
+
                 }
+
+                
+
                 if (eroe.Arma.PuntiDanno > mostro.Arma.PuntiDanno)
                 {
-                    Console.WriteLine("Hai Vinto");
-                    partita.PuntiVita = 20;
-                    int calcolo = eroe.Arma.PuntiDanno + mostro.Arma.PuntiDanno;                   
-                    partita.PuntiAccumulati = calcolo + partita.PuntiVita;
-                    Console.WriteLine($"Hai accumulato punti {partita.PuntiAccumulati}");
-                    InserisciRecords();
-
-                    if (partita.PuntiAccumulati >= 30)
+                    int v;
+                    try
                     {
-                        partita.PuntiVita = 40;
-                        calcolo = eroe.Arma.PuntiDanno + mostro.Arma.PuntiDanno;
-                        partita.PuntiAccumulati = calcolo + partita.PuntiVita;
-
-                        Console.WriteLine($"Complimenti questo hai accumulato punti {partita.PuntiAccumulati}");
-                        partita.Livello = 2;
-                        Console.WriteLine($"Sei Passato al livello {partita.Livello}");
-                        int aggiorna = partita.PuntiAccumulati;
-                        InserisciRecords();
-                        Giocaredinuovo();
-                        if (aggiorna >= 60)
+                        do
                         {
-                            partita.PuntiVita = 60;
-                            calcolo = eroe.Arma.PuntiDanno + mostro.Arma.PuntiDanno;
-                            partita.PuntiAccumulati = calcolo + partita.PuntiVita;
 
-                            partita.Livello = 3;
-                            Console.WriteLine($"Sei Passato al livello {partita.Livello}");
-                            Console.WriteLine($"punti accumulati {partita.PuntiAccumulati}");
-                            Giocaredinuovo();
-                            InserisciRecords();
-                        }
-                        if (partita.PuntiAccumulati >= 80)
-                        {
-                            partita.PuntiVita = 80;
-                            calcolo = eroe.Arma.PuntiDanno + mostro.Arma.PuntiDanno;
-                            partita.PuntiAccumulati = calcolo + partita.PuntiVita;
+                            Console.WriteLine("-------Hai Vinto---------");
+                            v = eroe.Arma.PuntiDanno - mostro.Arma.PuntiDanno;
+                            Console.WriteLine($"Hai vinto {v} punti");
+                          
+                            p.Add(v);
+                            Console.WriteLine($"Punti accumulati {p.Sum()}");
+                            if (v > 40)
+                            {
+                                Console.WriteLine($"Complimenti passi al livello 2");
+                                puntivita = 40;
+                                p.Add(puntivita);
+                               
+                            }
 
-                            partita.Livello = 4;
-                            Console.WriteLine($"Sei Passato al livello {partita.Livello}");
-                            Console.WriteLine($"punti accumulati {partita.PuntiAccumulati}");
-                            Giocaredinuovo();
-                            InserisciRecords();
-                        }
-                        if (partita.PuntiAccumulati >= 100)
-                        {
-                            partita.PuntiVita = 100;
-                            calcolo = eroe.Arma.PuntiDanno + mostro.Arma.PuntiDanno;
-                            partita.PuntiAccumulati = calcolo + partita.PuntiVita;
+                        } while (v == 41);
 
-                            partita.Livello = 5;
-                            Console.WriteLine($"Sei Passato al livello {partita.Livello}");
-                            Console.WriteLine($"punti accumulati {partita.PuntiAccumulati}");
-                            Giocaredinuovo();
-                        }
-                        Giocaredinuovo();
-                        InserisciRecords();
+                        
                     }
-                   
-                 
-                   
-                }
-                else if (mostro.Arma.PuntiDanno == eroe.Arma.PuntiDanno)
-                {
-                    Console.WriteLine("Pareggio non cambia nulla");
-                    Giocaredinuovo();
-                    InserisciRecords();
-                }
-              
+
+
+                    catch (Exception e)
+                    {
+                        Console.WriteLine(e.Message);
+                    }
+
+
+                  
+
+
+
             }
-      
+            else if (mostro.Arma.PuntiDanno == eroe.Arma.PuntiDanno)
+            {
+                Console.WriteLine("Pareggio non cambia nulla");
 
-    }
+               
 
-        private static void InserisciRecords()
-        {
-            EroeView.CreateEroe();
-            Console.WriteLine("Inserisci Livello raggiunto");
-            int livello = Convert.ToInt32(Console.ReadLine());
-            Console.WriteLine("Inserisci Punti Vita");
-             int puntivita = Convert.ToInt32(Console.ReadLine());
-            Console.WriteLine("Inserisci punti accumulati");
-            int puntiacc = Convert.ToInt32(Console.ReadLine());
-            Console.WriteLine("Inserisci username");
-            string user = Console.ReadLine();
-            PartitaRepository.InserisciRisultatiPartita(livello, puntivita,
-                    puntiacc, user);
+            }
+
+
+
+
         }
-    private static void Giocaredinuovo() {
+
+           
+        }
+
+     
+        private static object CalcoloPuntimeno(List<int> p)
+        {
+            var pun = 0;
+            foreach (var item in p)
+            {
+                pun = p[0] -= p[item];
+            }
+            return pun;
+        }
+
+        private static void Giocaredinuovo() {
         Console.WriteLine("Vuoi Giocare dinuovo?");
         Console.WriteLine("Premi 1 per SI");
         Console.WriteLine("Premi 2 per No");
@@ -151,7 +158,7 @@ namespace MostriVsEroi.View
         } while (true);
     }
 
-     
+
 
     }
 

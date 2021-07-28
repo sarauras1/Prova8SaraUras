@@ -1,32 +1,29 @@
 ﻿using MostriVsEroi.Modelli;
+using System.Collections.Generic;
 
 namespace MostriVsEroi.View
 {
-    internal class Partita
+   public class Partita
     {
+       
 
         public Utente Utente { get; set; }
-        public int PuntiAccumulati { get; set; }
         public int Livello { get; set; }
-        public int PuntiVita { get; set; }
+        public Punti Punti { get; set; }
         public Mostro Mostro { get; set; }
         public Eroe Eroe { get; set; }
-        public Partita(int puntiacc, Utente utente, int puntiVita, Eroe eroe, Mostro mostro, int livello)
+        public Partita(Utente utente, int livello, Punti punti, Mostro mostro, Eroe eroe)
         {
-          
-            PuntiAccumulati = puntiacc;
             Utente = utente;
             Livello = livello;
-            PuntiVita = puntiVita;
-            Eroe = eroe;
+            Punti = punti;
             Mostro = mostro;
+            Eroe = eroe;
         }
         public Partita()
         {
 
         }
        
-        
-        
     }
 }

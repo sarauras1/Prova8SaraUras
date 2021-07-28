@@ -14,20 +14,19 @@ namespace MostriVsEroi.View
         {
             Utente utente = RichiestaDati.InserisciUsernamePassword();
             utente = UtenteServices.VerifyAuthentication(utente);
-            if (utente.IsAuthenticated && utente.IsAdmin)
-            {
+            if (utente.IsAuthenticated)
+            {   // giocatore non admin
                 Menu.MenuAdmin(utente);
+           
 
             }
-            else if (utente.IsAuthenticated && !utente.IsAdmin)
+            else 
             {
                 //menu giocatore normale
                 Menu.MenuNonAdmin(utente);
+
             }
-            else
-            {
-                Console.WriteLine("Devi prima registrarti");
-            }
+           
         }
     }
 }

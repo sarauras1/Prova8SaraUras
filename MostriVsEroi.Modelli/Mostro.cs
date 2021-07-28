@@ -17,8 +17,6 @@ namespace MostriVsEroi.Modelli
             Arma = arma;
         }
 
-        public Mostro()
-        {
-        }
+     
     }
 }

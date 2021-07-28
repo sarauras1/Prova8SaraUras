@@ -17,10 +17,7 @@ namespace MostriVsEroi.Modelli
             IsAuthenticated = false;
             IsAdmin = false;
         }
-        public Utente(string username)
-        {
-            Username = username;
-        }
+       
         public Utente()
         {
         }
